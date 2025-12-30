@@ -35,8 +35,8 @@ A production-grade document similarity system that processes streaming documents
 - [x] Project setup
 - [x] Dataset acquisition (arXiv 100K abstracts)
 - [x] MinHash implementation
-- [ ] Text preprocessing pipeline
-- [ ] Baseline end-to-end demo
+- [x] Text preprocessing pipeline
+- [x] Baseline end-to-end demo
 
 ## Repository Structure
 ```
