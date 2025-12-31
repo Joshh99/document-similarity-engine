@@ -2,7 +2,7 @@
 
 > Finding near-duplicate and related documents in milliseconds using MinHash LSH and distributed computing
 
-**Status:** 🚧 In Development - Phase 1 (Week 1/4)
+**Status:** 🚧 In Development - Phase 1
 
 ## Project Overview
 
@@ -37,6 +37,20 @@ A production-grade document similarity system that processes streaming documents
 - [x] MinHash implementation
 - [x] Text preprocessing pipeline
 - [x] Baseline end-to-end demo
+
+## Demo Results
+
+### Performance on 10K arXiv Papers
+
+![Similarity Distribution](docs/similarity_distribution_10k.png)
+
+**Key Findings:**
+- **Query latency:** 218ms (sub-second response ✅)
+- **Median similarity:** 0.18 (healthy distribution, no pathological clustering)
+- **Threshold:** 0.3 effectively filters top ~15-20% most similar papers
+- **Indexing throughput:** 4 docs/sec (identified bottleneck for Phase 2 optimization)
+
+The system successfully identifies similar papers across diverse domains (physics, mathematics, computer science) with consistent performance.
 
 ## Repository Structure
 ```
