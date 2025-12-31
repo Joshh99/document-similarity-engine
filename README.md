@@ -54,7 +54,7 @@ A production-grade document similarity system that processes streaming documents
 
 ## Setup Instructions
 
-*Coming soon - Phase 1 in progress*
+Phase 1: Done!!
 
 ---
 
