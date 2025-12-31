@@ -24,10 +24,10 @@ A production-grade document similarity system that processes streaming documents
 
 ## Project Timeline
 
-- [ ] **Phase 1 (Week 1):** System Architecture & Local Prototype
-- [ ] **Phase 2 (Week 2):** Scale with Spark + Distributed Storage
-- [ ] **Phase 3 (Week 3):** REST API + Query Service
-- [ ] **Phase 4 (Week 4):** Production Deployment & Monitoring
+- [x] **Phase 1:** System Architecture & Local Prototype
+- [ ] **Phase 2:** Scale with Spark + Distributed Storage
+- [ ] **Phase 3:** REST API + Query Service
+- [ ] **Phase 4:** Production Deployment & Monitoring
 
 ## Current Phase: Phase 1 - Local Prototype
 
