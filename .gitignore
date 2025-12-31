@@ -15,7 +15,10 @@ data/*.parquet
 
 # Jupyter
 .ipynb_checkpoints
-*.ipynb
+# Ignore scratch/experimental notebooks, but keep numbered portfolio notebooks
+notebooks/scratch_*.ipynb
+notebooks/temp_*.ipynb
+notebooks/debug_*.ipynb
 
 # IDE
 .vscode/
