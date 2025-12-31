@@ -65,8 +65,7 @@ class MinHashLSH:
         Returns:
             MinHash signature as numpy array of length num_hashes
         """
-        # TODO: Implement MinHash signature computation
-        # 
+         
         # Algorithm:
         large_prime = 2**31 - 1
 
@@ -102,8 +101,7 @@ class MinHashLSH:
         Returns:
             Estimated Jaccard similarity (float between 0 and 1)
         """
-        # TODO: Implement Jaccard similarity estimation
-        # 
+    
         # The estimated Jaccard similarity is simply the fraction of
         # signature positions where sig1[i] == sig2[i]
         jacc_sim = np.sum(sig1 == sig2) / len(sig1)
