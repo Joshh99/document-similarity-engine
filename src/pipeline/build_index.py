@@ -57,7 +57,7 @@ def build_minhash_index(spark, output_path="/opt/spark/data/minhash_signatures.p
     print(f" Saved to Parquet in {save_time:.2f}s")
 
     # Verify saved data
-    print("\n🔍 Step 4: Verifying saved data...")
+    print("\n Step 4: Verifying saved data...")
     df_loaded = spark.read.parquet(output_path)
     verify_count = df_loaded.count()
     print(f" Verified {verify_count:,} records in Parquet")
@@ -81,12 +81,34 @@ def build_minhash_index(spark, output_path="/opt/spark/data/minhash_signatures.p
     
     return df_loaded
 
+def get_redis_stats():
+    """Get Redis memory usage statistics"""
+    import redis
+    
+    try:
+        r = redis.Redis(host='redis-similarity', port=6379, decode_responses=True)
+        info = r.info('memory')
+        
+        print("\n" + "=" * 60)
+        print("REDIS INDEX STATISTICS")
+        print("=" * 60)
+        print(f"Memory used:        {info['used_memory_human']}")
+        print(f"Peak memory:        {info['used_memory_peak_human']}")
+        print(f"Total keys:         {r.dbsize():,}")
+        print("=" * 60)
+        
+    except Exception as e:
+        print(f"Could not connect to Redis: {e}")
+
 if __name__ == "__main__":
     spark = SparkSession.builder \
         .appName("DocumentSimilarity-BuildIndex") \
         .getOrCreate()
     
     df = build_minhash_index(spark=spark)
-
     spark.stop()
+    
     print("\n Index build complete!")
+    
+    # Show Redis stats if available
+    get_redis_stats()
