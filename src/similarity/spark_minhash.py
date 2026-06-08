@@ -108,14 +108,14 @@ if __name__ == "__main__":
         .appName("DocumentSimilarity-MinHash") \
         .getOrCreate()
     
-    print("📥 Loading dataset...")
+    print(" Loading dataset...")
     start_load = time.time()
     df = load_arxiv_data(spark)
     load_count = df.count()
     load_time = time.time() - start_load
-    print(f"✅ Loaded {load_count} documents in {load_time:.2f}s")
+    print(f" Loaded {load_count} documents in {load_time:.2f}s")
     
-    print("\n🔨 Generating MinHash signatures...")
+    print("\n Generating MinHash signatures...")
     minhash = SparkMinHash(num_hashes=128)
     
     start_sig = time.time()
@@ -128,18 +128,18 @@ if __name__ == "__main__":
     count = df_signatures.count()
     sig_time = time.time() - start_sig
     
-    print(f"✅ Generated signatures for {count} documents in {sig_time:.2f}s")
-    print(f"⚡ Throughput: {count/sig_time:.0f} docs/sec")
+    print(f"Generated signatures for {count} documents in {sig_time:.2f}s")
+    print(f" Throughput: {count/sig_time:.0f} docs/sec")
     
-    print(f"\n📊 Sample signatures:")
+    print(f"\n Sample signatures:")
     df_signatures.select("doc_id", "signature").show(3, truncate=50)
     
     # Verify signature length
     first_sig = df_signatures.select("signature").first()[0]
-    print(f"\n✅ Signature length: {len(first_sig)} (expected: 128)")
+    print(f"\n Signature length: {len(first_sig)} (expected: 128)")
     
     total_time = time.time() - start_load
-    print(f"\n⏱️  Total pipeline time: {total_time:.2f}s")
+    print(f"\n  Total pipeline time: {total_time:.2f}s")
     
     spark.stop()
-    print("\n🎉 MinHash generation complete!")
+    print("\n MinHash generation complete!")

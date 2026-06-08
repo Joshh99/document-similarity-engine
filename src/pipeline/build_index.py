@@ -112,3 +112,4 @@ if __name__ == "__main__":
     
     # Show Redis stats if available
     get_redis_stats()
+
